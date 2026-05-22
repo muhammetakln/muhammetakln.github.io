@@ -36,7 +36,6 @@
             overflow-x: hidden;
         }
 
-        /* Klasik GitHub Grid Arka Plan Efekti */
         body::before {
             content: "";
             position: absolute;
@@ -57,7 +56,6 @@
             padding: 2rem;
         }
 
-        /* Header / Navigasyon */
         header {
             display: flex;
             justify-content: space-between;
@@ -98,7 +96,6 @@
             color: var(--accent-color);
         }
 
-        /* Hero Bölümü */
         .hero {
             display: flex;
             align-items: center;
@@ -156,7 +153,6 @@
             border-color: var(--accent-color);
         }
 
-        /* Butonlar */
         .btn-group {
             display: flex;
             gap: 1rem;
@@ -196,7 +192,6 @@
             border-color: var(--text-muted);
         }
 
-        /* Bölüm Başlıkları */
         .section-title {
             font-size: 1.75rem;
             color: #fff;
@@ -208,7 +203,6 @@
             padding-bottom: 0.75rem;
         }
 
-        /* Yetenekler Bölümü */
         .skills-section {
             margin-bottom: 5rem;
         }
@@ -250,7 +244,6 @@
             color: #fff;
         }
 
-        /* Projeler Bölümü */
         .projects-section {
             margin-bottom: 5rem;
         }
@@ -356,7 +349,6 @@
             font-weight: 500;
         }
 
-        /* Footer */
         footer {
             border-top: 1px solid var(--border-color);
             padding: 2rem 0;
