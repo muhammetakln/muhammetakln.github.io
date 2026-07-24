@@ -1,420 +1,793 @@
 <!DOCTYPE html>
-<html lang="tr">
+<html lang="tr" id="html-root">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Muhammet Akalın | Portfolio</title>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-<style>
-:root {
---bg-color: #0d1117;
---card-bg: #161b22;
---border-color: #30363d;
---text-main: #c9d1d9;
---text-muted: #8b949e;
---accent-color: #58a6ff;
---accent-glow: rgba(88, 166, 255, 0.15);
---success-color: #2ea44f;
-}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Muhammet Akalın | Full Stack & .NET Developer</title>
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --bg-color: #0b0f19;
+            --card-bg: #131c2e;
+            --card-border: #1e293b;
+            --text-main: #f8fafc;
+            --text-muted: #94a3b8;
+            --accent-cyan: #06b6d4;
+            --accent-green: #10b981;
+            --accent-purple: #8b5cf6;
+            --code-bg: #0f172a;
+        }
 
-* {
-margin: 0;
-padding: 0;
-box-sizing: border-box;
-font-family: 'Inter', sans-serif;
-scroll-behavior: smooth;
-}
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-body {
-background-color: var(--bg-color);
-color: var(--text-main);
-line-height: 1.6;
-overflow-x: hidden;
-}
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            line-height: 1.7;
+            scroll-behavior: smooth;
+            overflow-x: hidden;
+        }
 
-.container {
-max-width: 1100px;
-margin: 0 auto;
-padding: 2rem;
-}
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
 
-header {
-display: flex;
-justify-content: space-between;
-align-items: center;
-padding: 1.5rem 0;
-border-bottom: 1px solid var(--border-color);
-margin-bottom: 3rem;
-}
+        /* Ambient Glow Effects */
+        .glow-orb {
+            position: absolute;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(6, 182, 212, 0.15) 0%, rgba(139, 92, 246, 0.05) 50%, transparent 70%);
+            z-index: -1;
+            border-radius: 50%;
+            filter: blur(60px);
+        }
 
-.logo {
-font-weight: 700;
-font-size: 1.2rem;
-color: #fff;
-text-decoration: none;
-display: flex;
-align-items: center;
-gap: 0.5rem;
-}
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background-color: rgba(11, 15, 25, 0.85);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--card-border);
+            z-index: 1000;
+        }
 
-.logo span {
-color: var(--accent-color);
-}
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1.2rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
 
-nav .nav-links {
-display: flex;
-gap: 1.5rem;
-list-style: none;
-}
+        .logo {
+            font-family: 'Fira Code', monospace;
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--accent-cyan);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
 
-nav .nav-links a {
-color: var(--text-muted);
-text-decoration: none;
-font-size: 0.95rem;
-transition: color 0.3s;
-}
+        .logo span {
+            color: var(--accent-green);
+        }
 
-nav .nav-links a:hover {
-color: var(--accent-color);
-}
+        .nav-right {
+            display: flex;
+            align-items: center;
+            gap: 2.5rem;
+        }
 
-.hero {
-display: flex;
-align-items: center;
-gap: 3rem;
-margin-bottom: 5rem;
-padding: 2rem 0;
-}
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
 
-.hero-content {
-flex: 1;
-}
+        .nav-links a {
+            font-size: 0.95rem;
+            font-weight: 500;
+            color: var(--text-muted);
+            transition: color 0.3s ease;
+        }
 
-.hero-badge {
-background: var(--accent-glow);
-color: var(--accent-color);
-padding: 0.4rem 1rem;
-border-radius: 2rem;
-font-size: 0.85rem;
-font-weight: 600;
-display: inline-block;
-margin-bottom: 1rem;
-border: 1px solid rgba(88, 166, 255, 0.3);
-}
+        .nav-links a:hover {
+            color: var(--accent-cyan);
+        }
 
-.hero h1 {
-font-size: 3rem;
-color: #fff;
-margin-bottom: 1rem;
-font-weight: 700;
-letter-spacing: -0.05rem;
-}
+        .lang-switch {
+            background: linear-gradient(135deg, rgba(6, 182, 212, 0.1), rgba(16, 185, 129, 0.1));
+            border: 1px solid var(--accent-cyan);
+            color: var(--accent-cyan);
+            padding: 0.4rem 1rem;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 0.85rem;
+            font-family: 'Fira Code', monospace;
+            transition: all 0.3s ease;
+        }
 
-.hero p {
-font-size: 1.1rem;
-color: var(--text-muted);
-margin-bottom: 2rem;
-max-width: 600px;
-}
+        .lang-switch:hover {
+            background: var(--accent-cyan);
+            color: var(--bg-color);
+            box-shadow: 0 0 15px rgba(6, 182, 212, 0.4);
+        }
 
-.hero-avatar img {
-width: 220px;
-height: 220px;
-border-radius: 50%;
-border: 4px solid var(--border-color);
-box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-transition: transform 0.3s ease;
-}
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
 
-.hero-avatar img:hover {
-transform: scale(1.03);
-border-color: var(--accent-color);
-}
+        section {
+            padding: 7rem 0 4rem 0;
+        }
 
-.btn-group {
-display: flex;
-gap: 1rem;
-}
+        /* Hero Section */
+        #hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 3rem;
+            position: relative;
+        }
 
-.btn {
-display: inline-flex;
-align-items: center;
-gap: 0.5rem;
-padding: 0.75rem 1.5rem;
-border-radius: 6px;
-font-size: 0.95rem;
-font-weight: 500;
-text-decoration: none;
-transition: all 0.3s;
-cursor: pointer;
-border: 1px solid transparent;
-}
+        .hero-content {
+            flex: 1;
+        }
 
-.btn-primary {
-background-color: var(--success-color);
-color: #fff;
-}
+        .terminal-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.6rem;
+            background-color: var(--code-bg);
+            border: 1px solid var(--card-border);
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+            font-family: 'Fira Code', monospace;
+            font-size: 0.85rem;
+            color: var(--accent-green);
+            margin-bottom: 1.5rem;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+        }
 
-.btn-primary:hover {
-background-color: #2c974b;
-}
+        .terminal-badge .dot {
+            width: 8px;
+            height: 8px;
+            background-color: var(--accent-green);
+            border-radius: 50%;
+            animation: pulse 2s infinite;
+        }
 
-.btn-secondary {
-background-color: var(--card-bg);
-color: var(--text-main);
-border: 1px solid var(--border-color);
-}
+        @keyframes pulse {
+            0% { transform: scale(1); opacity: 1; }
+            50% { transform: scale(1.3); opacity: 0.4; }
+            100% { transform: scale(1); opacity: 1; }
+        }
 
-.btn-secondary:hover {
-background-color: #21262d;
-border-color: var(--text-muted);
-}
+        .hero-content h1 {
+            font-size: 3.5rem;
+            font-weight: 800;
+            margin-bottom: 0.5rem;
+            letter-spacing: -0.02em;
+            background: linear-gradient(to right, #fff, var(--text-muted));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
 
-.section-title {
-font-size: 1.75rem;
-color: #fff;
-margin-bottom: 2rem;
-display: flex;
-align-items: center;
-gap: 0.75rem;
-border-bottom: 1px solid var(--border-color);
-padding-bottom: 0.75rem;
-}
+        .hero-content h2 {
+            font-family: 'Fira Code', monospace;
+            font-size: 1.4rem;
+            color: var(--accent-cyan);
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+        }
 
-.skills-section {
-margin-bottom: 5rem;
-}
+        .hero-content p {
+            font-size: 1.1rem;
+            color: var(--text-muted);
+            max-width: 600px;
+            margin-bottom: 2.5rem;
+        }
 
-.skills-grid {
-display: grid;
-grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
-gap: 1.25rem;
-}
+        .btn-group {
+            display: flex;
+            gap: 1.2rem;
+        }
 
-.skill-card {
-background: var(--card-bg);
-border: 1px solid var(--border-color);
-border-radius: 6px;
-padding: 1.2rem;
-text-align: center;
-transition: all 0.3s;
-}
+        .btn {
+            padding: 0.85rem 1.8rem;
+            border-radius: 8px;
+            font-weight: 600;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            display: inline-flex;
+            align-items: center;
+            gap: 0.6rem;
+            font-size: 0.95rem;
+        }
 
-.skill-card:hover {
-transform: translateY(-3px);
-border-color: var(--accent-color);
-box-shadow: 0 4px 20px var(--accent-glow);
-}
+        .btn-primary {
+            background: linear-gradient(135deg, var(--accent-cyan), #0284c7);
+            color: #0b0f19;
+            box-shadow: 0 4px 20px rgba(6, 182, 212, 0.3);
+        }
 
-.skill-card i {
-font-size: 2rem;
-margin-bottom: 0.75rem;
-}
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 25px rgba(6, 182, 212, 0.5);
+        }
 
-.skill-card.dotnet i { color: #512bd4; }
-.skill-card.csharp i { color: #239120; }
-.skill-card.sql i { color: #00758f; }
-.skill-card.docker i { color: #2496ed; }
-.skill-card.web i { color: #f0db4f; }
+        .btn-outline {
+            border: 1px solid var(--card-border);
+            background-color: var(--card-bg);
+            color: var(--text-main);
+        }
 
-.skill-card h3 {
-font-size: 1rem;
-color: #fff;
-}
+        .btn-outline:hover {
+            border-color: var(--accent-purple);
+            color: var(--accent-purple);
+            transform: translateY(-2px);
+        }
 
-.projects-section {
-margin-bottom: 5rem;
-}
+        /* Hero Code Card */
+        .hero-visual {
+            flex: 1;
+            display: flex;
+            justify-content: flex-end;
+        }
 
-.projects-grid {
-display: grid;
-grid-template-columns: repeat(auto-fill, minmax(48%, 1fr));
-gap: 2rem;
-}
+        .code-window {
+            background-color: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 12px;
+            width: 100%;
+            max-width: 500px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+            overflow: hidden;
+        }
 
-.project-card {
-background: var(--card-bg);
-border: 1px solid var(--border-color);
-border-radius: 8px;
-padding: 1.75rem;
-display: flex;
-flex-direction: column;
-justify-content: space-between;
-transition: all 0.3s;
-}
+        .code-header {
+            background-color: var(--code-bg);
+            padding: 0.8rem 1.2rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            border-bottom: 1px solid var(--card-border);
+        }
 
-.project-card:hover {
-border-color: #8b949e;
-transform: translateY(-4px);
-box-shadow: 0 8px 24px rgba(0,0,0,0.3);
-}
+        .code-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+        }
 
-.project-top {
-display: flex;
-justify-content: space-between;
-align-items: flex-start;
-margin-bottom: 1rem;
-}
+        .dot-red { background-color: #ef4444; }
+        .dot-yellow { background-color: #f59e0b; }
+        .dot-green { background-color: #10b981; }
 
-.folder-icon {
-font-size: 1.5rem;
-color: var(--text-muted);
-}
+        .code-title {
+            margin-left: auto;
+            margin-right: auto;
+            font-family: 'Fira Code', monospace;
+            font-size: 0.8rem;
+            color: var(--text-muted);
+        }
 
-.project-links a {
-color: var(--text-muted);
-font-size: 1.2rem;
-margin-left: 0.75rem;
-transition: color 0.3s;
-text-decoration: none;
-}
+        .code-body {
+            padding: 1.5rem;
+            font-family: 'Fira Code', monospace;
+            font-size: 0.9rem;
+            line-height: 1.6;
+            color: #e2e8f0;
+        }
 
-.project-links a:hover {
-color: var(--accent-color);
-}
+        .code-keyword { color: #f472b6; }
+        .code-class { color: #38bdf8; }
+        .code-string { color: #34d399; }
+        .code-variable { color: #fbbf24; }
 
-.project-card h3 {
-font-size: 1.3rem;
-color: #fff;
-margin-bottom: 0.75rem;
-}
+        /* Section Titles */
+        .section-title {
+            font-size: 2.2rem;
+            font-weight: 800;
+            margin-bottom: 3rem;
+            color: #ffffff;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
 
-.project-card h3 a {
-color: inherit;
-text-decoration: none;
-}
+        .section-title span {
+            font-family: 'Fira Code', monospace;
+            color: var(--accent-cyan);
+            font-size: 1.5rem;
+        }
 
-.project-card h3 a:hover {
-color: var(--accent-color);
-}
+        /* About Section */
+        .about-card {
+            background-color: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 16px;
+            padding: 2.5rem;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            position: relative;
+            overflow: hidden;
+        }
 
-.project-card p {
-color: var(--text-muted);
-font-size: 0.95rem;
-margin-bottom: 1.5rem;
-flex-grow: 1;
-}
+        .about-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 4px;
+            height: 100%;
+            background: linear-gradient(to bottom, var(--accent-cyan), var(--accent-purple));
+        }
 
-.project-tech {
-display: flex;
-gap: 0.75rem;
-flex-wrap: wrap;
-}
+        .about-card p {
+            color: var(--text-muted);
+            font-size: 1.15rem;
+            margin-bottom: 1.2rem;
+        }
 
-.tech-tag {
-font-size: 0.8rem;
-color: var(--accent-color);
-background: rgba(88, 166, 255, 0.1);
-padding: 0.2rem 0.6rem;
-border-radius: 2rem;
-font-weight: 500;
-}
+        .about-card p:last-child {
+            margin-bottom: 0;
+        }
 
-footer {
-border-top: 1px solid var(--border-color);
-padding: 2rem 0;
-text-align: center;
-color: var(--text-muted);
-font-size: 0.9rem;
-}
+        /* Projects Grid */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+        }
 
-footer a {
-color: var(--text-main);
-text-decoration: none;
-}
+        .project-card {
+            background-color: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 16px;
+            padding: 2rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+        }
 
-footer a:hover {
-color: var(--accent-color);
-}
+        .project-card:hover {
+            transform: translateY(-8px);
+            border-color: var(--accent-cyan);
+            box-shadow: 0 20px 40px rgba(6, 182, 212, 0.15);
+        }
 
-@media (max-width: 768px) {
-.projects-grid { grid-template-columns: 1fr; }
-.hero { flex-direction: column-reverse; text-align: center; gap: 2rem; }
-.hero p { margin: 0 auto 2rem auto; }
-.btn-group { justify-content: center; }
-.hero h1 { font-size: 2rem; }
-}
-</style>
+        .project-card h3 {
+            font-size: 1.4rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: #ffffff;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .project-card h3 i {
+            color: var(--accent-cyan);
+            font-size: 1.2rem;
+        }
+
+        .project-card p {
+            color: var(--text-muted);
+            font-size: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .tech-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.6rem;
+            margin-bottom: 2rem;
+        }
+
+        .tech-tag {
+            background-color: rgba(6, 182, 212, 0.1);
+            color: var(--accent-cyan);
+            font-family: 'Fira Code', monospace;
+            font-size: 0.8rem;
+            padding: 0.3rem 0.8rem;
+            border-radius: 6px;
+            border: 1px solid rgba(6, 182, 212, 0.2);
+        }
+
+        .project-links {
+            display: flex;
+            gap: 1.2rem;
+            padding-top: 1rem;
+            border-top: 1px solid var(--card-border);
+        }
+
+        .project-links a {
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--text-main);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: color 0.3s ease;
+        }
+
+        .project-links a:hover {
+            color: var(--accent-cyan);
+        }
+
+        /* Skills Section */
+        .skills-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+        }
+
+        .skill-category {
+            background-color: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 16px;
+            padding: 2rem;
+            transition: transform 0.3s ease;
+        }
+
+        .skill-category:hover {
+            transform: translateY(-5px);
+        }
+
+        .skill-category h4 {
+            color: var(--accent-cyan);
+            font-family: 'Fira Code', monospace;
+            margin-bottom: 1.5rem;
+            font-size: 1.2rem;
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+        }
+
+        .skill-list {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .skill-list li {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            color: var(--text-main);
+            font-weight: 500;
+            background: var(--code-bg);
+            padding: 0.8rem 1rem;
+            border-radius: 8px;
+            border: 1px solid var(--card-border);
+        }
+
+        .skill-list li i {
+            color: var(--accent-green);
+        }
+
+        /* Contact Section */
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .contact-item {
+            background-color: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 16px;
+            padding: 2rem;
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .contact-item:hover {
+            border-color: var(--accent-cyan);
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(6, 182, 212, 0.1);
+        }
+
+        .contact-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, rgba(6, 182, 212, 0.1), rgba(139, 92, 246, 0.1));
+            border: 1px solid var(--accent-cyan);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            color: var(--accent-cyan);
+        }
+
+        .contact-info span {
+            display: block;
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            font-family: 'Fira Code', monospace;
+            margin-bottom: 0.3rem;
+        }
+
+        .contact-info a {
+            font-size: 1.05rem;
+            font-weight: 600;
+            color: var(--text-main);
+            word-break: break-all;
+            transition: color 0.3s ease;
+        }
+
+        .contact-info a:hover {
+            color: var(--accent-cyan);
+        }
+
+        /* Footer */
+        footer {
+            border-top: 1px solid var(--card-border);
+            padding: 3rem 0;
+            text-align: center;
+            color: var(--text-muted);
+            font-family: 'Fira Code', monospace;
+            font-size: 0.9rem;
+            margin-top: 6rem;
+            background-color: rgba(11, 15, 25, 0.5);
+        }
+
+        /* Responsive */
+        @media (max-width: 968px) {
+            #hero {
+                flex-direction: column;
+                text-align: center;
+                padding-top: 4rem;
+            }
+            .hero-content p {
+                margin-left: auto;
+                margin-right: auto;
+            }
+            .btn-group {
+                justify-content: center;
+            }
+            .hero-visual {
+                justify-content: center;
+                width: 100%;
+            }
+            .nav-links {
+                display: none;
+            }
+        }
+    </style>
 </head>
 <body>
-<div class="container">
-<header>
-<a href="#" class="logo"><i class="fab fa-github"></i> muhammetakln<span>.io</span></a>
-<nav>
-<ul class="nav-links">
-<li><a href="#about">Hakkımda</a></li>
-<li><a href="#skills">Yetenekler</a></li>
-<li><a href="#projects">Projeler</a></li>
-</ul>
-</nav>
-</header>
 
-<section class="hero" id="about">
-<div class="hero-content">
-<span class="hero-badge">Full-Stack Developer</span>
-<h1>Merhaba, Ben Muhammet</h1>
-<p>.NET ekosistemi, modern web teknolojileri ve mimari tasarımlar üzerine odaklanmış bir yazılım geliştiriciyim. Performanslı, ölçeklenebilir ve temiz kod prensiplerine uygun projeler üretiyorum.</p>
-<div class="btn-group">
-<a href="https://github.com/muhammetakln" target="_blank" class="btn btn-primary"><i class="fab fa-github"></i> GitHub Profilim</a>
-<a href="#projects" class="btn btn-secondary">Projelerimi Gör</a>
-</div>
-</div>
-<div class="hero-avatar">
-<img src="https://avatars.githubusercontent.com/muhammetakln" alt="Muhammet Akalın">
-</div>
-</section>
+    <div class="glow-orb" style="top: 10%; left: 5%;"></div>
+    <div class="glow-orb" style="bottom: 20%; right: 5%;"></div>
 
-<section class="skills-section" id="skills">
-<h2 class="section-title"><i class="fas fa-code"></i> Teknolojik Yetkinlikler</h2>
-<div class="skills-grid">
-<div class="skill-card dotnet"><i class="fab fa-microsoft"></i><h3>ASP.NET Core</h3></div>
-<div class="skill-card csharp"><i class="fas fa-hashtag"></i><h3>C# / EF Core</h3></div>
-<div class="skill-card sql"><i class="fas fa-database"></i><h3>SQL / SQLite</h3></div>
-<div class="skill-card docker"><i class="fab fa-docker"></i><h3>Docker & DevOps</h3></div>
-<div class="skill-card web"><i class="fas fa-laptop-code"></i><h3>Web Geliştirme</h3></div>
-</div>
-</section>
+    <header>
+        <div class="nav-container">
+            <a href="#hero" class="logo"><i class="fa-solid fa-code"></i> Muhammet<span>.dev</span></a>
+            <div class="nav-right">
+                <ul class="nav-links">
+                    <li><a href="#about" data-tr="Hakkımda" data-en="About Me">Hakkımda</a></li>
+                    <li><a href="#projects" data-tr="Projeler" data-en="Projects">Projeler</a></li>
+                    <li><a href="#skills" data-tr="Yetenekler" data-en="Skills">Yetenekler</a></li>
+                    <li><a href="#contact" data-tr="İletişim" data-en="Contact">İletişim</a></li>
+                </ul>
+                <button class="lang-switch" id="langBtn" onclick="toggleLanguage()">EN</button>
+            </div>
+        </div>
+    </header>
 
-<section class="projects-section" id="projects">
-<h2 class="section-title"><i class="fas fa-cubes"></i> Öne Çıkan Projeler</h2>
-<div class="projects-grid">
-<div class="project-card">
-<div class="project-top">
-<i class="far fa-folder folder-icon"></i>
-<div class="project-links"><a href="https://github.com/muhammetakln" target="_blank"><i class="fab fa-github"></i></a></div>
-</div>
-<div>
-<h3><a href="https://github.com/muhammetakln" target="_blank">StayHub</a></h3>
-<p>Otel rezervasyon süreçlerini uçtan uca yöneten kapsamlı bir otomasyon sistemi. Oda yönetimi, rezervasyon mantığı ve kullanıcı değerlendirme modüllerini barındıran mimari odaklı bir mezuniyet projesi.</p>
-</div>
-<div class="project-tech">
-<span class="tech-tag">C#</span><span class="tech-tag">ASP.NET Core</span><span class="tech-tag">EF Core</span><span class="tech-tag">Docker</span>
-</div>
-</div>
+    <div class="container">
+        <!-- Hero Section -->
+        <section id="hero">
+            <div class="hero-content">
+                <div class="terminal-badge">
+                    <div class="dot"></div>
+                    <span>System.Ready() // .NET Core Expert</span>
+                </div>
+                <h1>Muhammet Akalın</h1>
+                <h2 data-tr="Full Stack & .NET Yazılım Uzmanı" data-en="Full Stack & .NET Software Specialist">Full Stack & .NET Yazılım Uzmanı</h2>
+                <p data-tr="Modern web teknolojileri, kurumsal mimariler ve ilişkisel veritabanı tasarımı konularında uzmanlaşmış; .NET ekosistemi ve containerization süreçlerinde yüksek performanslı çözümler üretiyorum." data-en="Specialized in modern web technologies, enterprise architectures, and relational database design; building high-performance solutions in the .NET ecosystem and containerization processes.">Modern web teknolojileri, kurumsal mimariler ve ilişkisel veritabanı tasarımı konularında uzmanlaşmış; .NET ekosistemi ve containerization süreçlerinde yüksek performanslı çözümler üretiyorum.</p>
+                <div class="btn-group">
+                    <a href="#projects" class="btn btn-primary"><i class="fa-solid fa-terminal"></i> <span data-tr="Projelerim" data-en="My Projects">Projelerim</span></a>
+                    <a href="#contact" class="btn btn-outline"><i class="fa-solid fa-paper-plane"></i> <span data-tr="İletişime Geç" data-en="Get in Touch">İletişime Geç</span></a>
+                </div>
+            </div>
+            <div class="hero-visual">
+                <div class="code-window">
+                    <div class="code-header">
+                        <div class="code-dot dot-red"></div>
+                        <div class="code-dot dot-yellow"></div>
+                        <div class="code-dot dot-green"></div>
+                        <div class="code-title">DeveloperProfile.cs</div>
+                    </div>
+                    <div class="code-body">
+                        <span class="code-keyword">public class</span> <span class="code-class">Developer</span> : <span class="code-class">IEngineer</span><br>
+                        {<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;<span class="code-keyword">public string</span> Name => <span class="code-string">"Muhammet Akalın"</span>;<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;<span class="code-keyword">public string[]</span> Stack => <span class="code-keyword">new</span>[] { <br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="code-string">"C#"</span>, <span class="code-string">"ASP.NET Core"</span>, <br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="code-string">"React"</span>, <span class="code-string">"Docker"</span>, <span class="code-string">"SQL"</span> <br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;};<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;<span class="code-keyword">public bool</span> CleanArchitecture => <span class="code-keyword">true</span>;<br>
+                        }
+                    </div>
+                </div>
+            </div>
+        </section>
 
-<div class="project-card">
-<div class="project-top">
-<i class="far fa-folder folder-icon"></i>
-<div class="project-links"><a href="https://github.com/muhammetakln/ECommerce" target="_blank"><i class="fab fa-github"></i></a></div>
-</div>
-<div>
-<h3><a href="https://github.com/muhammetakln/ECommerce" target="_blank">ECommerce</a></h3>
-<p>Katmanlı mimari (Layered Architecture) ve kurumsal tasarım kalıpları (Unit of Work, Repository vb.) kullanılarak geliştirilmiş modern, optimize ve güvenli bir e-ticaret arka plan altyapısı.</p>
-</div>
-<div class="project-tech">
-<span class="tech-tag">.NET Core</span><span class="tech-tag">Web API</span><span class="tech-tag">MSSQL</span><span class="tech-tag">Repository Pattern</span>
-</div>
-</div>
-</div>
-</section>
+        <!-- About Section -->
+        <section id="about">
+            <h3 class="section-title"><span>01.</span> <span data-tr="Hakkımda" data-en="About Me">Hakkımda</span></h3>
+            <div class="about-card">
+                <p data-tr="Modern web teknolojileri, kurumsal mimariler ve ilişkisel veritabanı tasarımı konularında uzmanlaşmış; .NET ekosistemi (C#, ASP.NET Core, Entity Framework Core) ve containerization (Docker) süreçlerinde yetkin Full Stack Developer [cite: Muhammet_Akalin_ozgecmis.pdf]. Otel rezervasyon sistemleri, e-ticaret platformları ve ödeme servisleri dahil olmak üzere ölçeklenebilir GitHub projeleri geliştirdim." data-en="Specialized in modern web technologies, enterprise architectures, and relational database design; a proficient Full Stack Developer in the .NET ecosystem (C#, ASP.NET Core, Entity Framework Core) and containerization (Docker) [cite: Muhammet_Akalin_ozgecmis.pdf]. I have developed scalable GitHub projects including hotel reservation systems, e-commerce platforms, and payment services.">Modern web teknolojileri, kurumsal mimariler ve ilişkisel veritabanı tasarımı konularında uzmanlaşmış; .NET ekosistemi (C#, ASP.NET Core, Entity Framework Core) ve containerization (Docker) süreçlerinde yetkin Full Stack Developer [cite: Muhammet_Akalin_ozgecmis.pdf]. Otel rezervasyon sistemleri, e-ticaret platformları ve ödeme servisleri dahil olmak üzere ölçeklenebilir GitHub projeleri geliştirdim.</p>
+                <p data-tr="Temiz mimari (Clean Architecture), Unit of Work tasarım deseni ve sürdürülebilir kod yazımı odak alanlarım olup; React, TypeScript ve DevOps süreçleriyle yetkinliklerimi sürekli genişletmekteyim [cite: Muhammet_Akalin_ozgecmis.pdf]." data-en="My focus areas include Clean Architecture, Unit of Work design pattern, and sustainable coding, while continuously expanding my competencies with React, TypeScript, and DevOps processes [cite: Muhammet_Akalin_ozgecmis.pdf].">Temiz mimari (Clean Architecture), Unit of Work tasarım deseni ve sürdürülebilir kod yazımı odak alanlarım olup; React, TypeScript ve DevOps süreçleriyle yetkinliklerimi sürekli genişletmekteyim [cite: Muhammet_Akalin_ozgecmis.pdf].</p>
+            </div>
+        </section>
 
-<footer>
-<p>&copy; 2026 Muhammet Akalın. Tüm Hakları Saklıdır.</p>
-<p style="margin-top: 0.5rem; font-size: 0.8rem;">Bu sayfa <a href="https://pages.github.com" target="_blank">GitHub Pages</a> ile barındırılmaktadır.</p>
-</footer>
-</div>
+        <!-- Projects Section -->
+        <section id="projects">
+            <h3 class="section-title"><span>02.</span> <span data-tr="Öne Çıkan Projeler" data-en="Featured Projects">Öne Çıkan Projeler</span></h3>
+            <div class="projects-grid">
+                <div class="project-card">
+                    <div>
+                        <h3>StayHub - Rezervasyon <i class="fa-solid fa-hotel"></i></h3>
+                        <p data-tr="Docker entegrasyonlu, otel ve mülk yönetim süreçlerini yöneten kapsamlı web tabanlı uygulama." data-en="Comprehensive web-based application managing hotel and property management processes with Docker integration.">Docker entegrasyonlu, otel ve mülk yönetim süreçlerini yöneten kapsamlı web tabanlı uygulama.</p>
+                        <div class="tech-tags">
+                            <span class="tech-tag">.NET Core</span>
+                            <span class="tech-tag">SQL Server</span>
+                            <span class="tech-tag">Docker</span>
+                        </div>
+                    </div>
+                    <div class="project-links">
+                        <a href="#" target="_blank"><i class="fa-solid fa-arrow-up-right-from-square"></i> Demo</a>
+                        <a href="https://github.com/muhammetakln" target="_blank"><i class="fa-brands fa-github"></i> GitHub</a>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div>
+                        <h3>LibraNet - Makale Platformu <i class="fa-solid fa-book-open"></i></h3>
+                        <p data-tr="Kullanıcı yetkilendirme, modern arayüz ve güvenli arka plan altyapısına sahip makale ve içerik paylaşım ağı." data-en="Article and content sharing network with user authorization, modern interface, and secure backend infrastructure.">Kullanıcı yetkilendirme, modern arayüz ve güvenli arka plan altyapısına sahip makale ve içerik paylaşım ağı.</p>
+                        <div class="tech-tags">
+                            <span class="tech-tag">React</span>
+                            <span class="tech-tag">ASP.NET Core</span>
+                            <span class="tech-tag">Identity</span>
+                        </div>
+                    </div>
+                    <div class="project-links">
+                        <a href="#" target="_blank"><i class="fa-solid fa-arrow-up-right-from-square"></i> Demo</a>
+                        <a href="https://github.com/muhammetakln" target="_blank"><i class="fa-brands fa-github"></i> GitHub</a>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div>
+                        <h3 data-tr="E-Ticaret Altyapısı" data-en="E-Commerce Infrastructure">E-Ticaret Altyapısı <i class="fa-solid fa-cart-shopping"></i></h3>
+                        <p data-tr="Sepet yönetimi, veri saklama ve performans optimizasyonları içeren kurumsal e-commerce projesi." data-en="Enterprise e-commerce project including cart management, data storage, and performance optimizations.">Sepet yönetimi, veri saklama ve performans optimizasyonları içeren kurumsal e-commerce projesi.</p>
+                        <div class="tech-tags">
+                            <span class="tech-tag">C#</span>
+                            <span class="tech-tag">Entity Framework</span>
+                            <span class="tech-tag">SQL</span>
+                        </div>
+                    </div>
+                    <div class="project-links">
+                        <a href="#" target="_blank"><i class="fa-solid fa-arrow-up-right-from-square"></i> Demo</a>
+                        <a href="https://github.com/muhammetakln" target="_blank"><i class="fa-brands fa-github"></i> GitHub</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Skills Section -->
+        <section id="skills">
+            <h3 class="section-title"><span>03.</span> <span data-tr="Yetenekler & Teknolojiler" data-en="Skills & Technologies">Yetenekler & Teknolojiler</span></h3>
+            <div class="skills-container">
+                <div class="skill-category">
+                    <h4 data-tr="// Arka Plan (Backend)" data-en="// Backend"><i class="fa-solid fa-server"></i> <span data-tr="Arka Plan (Backend)" data-en="Backend">Arka Plan (Backend)</span></h4>
+                    <ul class="skill-list">
+                        <li><i class="fa-solid fa-check"></i> C# / .NET Core</li>
+                        <li><i class="fa-solid fa-check"></i> RESTful API</li>
+                        <li><i class="fa-solid fa-check"></i> Entity Framework Core</li>
+                    </ul>
+                </div>
+                <div class="skill-category">
+                    <h4 data-tr="// Veritabanı & Araçlar" data-en="// Database & Tools"><i class="fa-solid fa-database"></i> <span data-tr="Veritabanı & Araçlar" data-en="Database & Tools">Veritabanı & Araçlar</span></h4>
+                    <ul class="skill-list">
+                        <li><i class="fa-solid fa-check"></i> MS SQL Server / SQLite</li>
+                        <li><i class="fa-solid fa-check"></i> Docker</li>
+                        <li><i class="fa-solid fa-check"></i> Git / GitHub</li>
+                    </ul>
+                </div>
+                <div class="skill-category">
+                    <h4 data-tr="// Arayüz (Frontend)" data-en="// Frontend"><i class="fa-solid fa-laptop-code"></i> <span data-tr="Arayüz (Frontend)" data-en="Frontend">Arayüz (Frontend)</span></h4>
+                    <ul class="skill-list">
+                        <li><i class="fa-solid fa-check"></i> React.js</li>
+                        <li><i class="fa-solid fa-check"></i> HTML5 / CSS3</li>
+                        <li><i class="fa-solid fa-check"></i> JavaScript / TypeScript</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact">
+            <h3 class="section-title"><span>04.</span> <span data-tr="İletişim" data-en="Contact">İletişim</span></h3>
+            <div class="contact-grid">
+                <div class="contact-item">
+                    <div class="contact-icon"><i class="fa-solid fa-envelope"></i></div>
+                    <div class="contact-info">
+                        <span>E-posta</span>
+                        <a href="mailto:akalinmuhammmetyz@gmail.com">akalinmuhammmetyz@gmail.com</a>
+                    </div>
+                </div>
+                <div class="contact-item">
+                    <div class="contact-icon"><i class="fa-solid fa-phone"></i></div>
+                    <div class="contact-info">
+                        <span>Telefon</span>
+                        <a href="tel:05464312274">0546 431 22 74</a>
+                    </div>
+                </div>
+                <div class="contact-item">
+                    <div class="contact-icon"><i class="fa-brands fa-github"></i></div>
+                    <div class="contact-info">
+                        <span>GitHub</span>
+                        <a href="https://github.com/muhammetakln" target="_blank">github.com/muhammetakln</a>
+                    </div>
+                </div>
+                <div class="contact-item">
+                    <div class="contact-icon"><i class="fa-brands fa-linkedin"></i></div>
+                    <div class="contact-info">
+                        <span>LinkedIn</span>
+                        <a href="https://www.linkedin.com/in/muhammet-akal%C4%B1nn-703aa4406/" target="_blank">linkedin.com/in/muhammet-akalınn</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <footer>
+        <p>&copy; 2026 Muhammet Akalın. All rights reserved. // Coded with Passion.</p>
+    </footer>
+
+    <script>
+        let currentLang = 'tr';
+
+        function toggleLanguage() {
+            currentLang = currentLang === 'tr' ? 'en' : 'tr';
+            document.getElementById('langBtn').innerText = currentLang === 'tr' ? 'EN' : 'TR';
+            document.getElementById('html-root').setAttribute('lang', currentLang);
+
+            const elements = document.querySelectorAll('[data-tr]');
+            elements.forEach(el => {
+                if (currentLang === 'en') {
+                    el.innerHTML = el.getAttribute('data-en');
+                } else {
+                    el.innerHTML = el.getAttribute('data-tr');
+                }
+            });
+        }
+    </script>
 </body>
 </html>
